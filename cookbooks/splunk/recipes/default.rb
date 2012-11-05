@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-log "Installing Splunk - version 1"
+log "Installing Splunk - version 5"
 
 user "splunk" do
  action :create
@@ -21,15 +21,15 @@ directory "/opt/splunk" do
  action :create 
 end 
 
-remote_file "/opt/splunk.tar" do   
- source "https://rs-training-assets.s3.amazonaws.com/splunk-4.3.4-136012-Linux-x86_64.tar"
+remote_file "/opt/splunk5.tar" do   
+ source "https://rs-training-assets.s3.amazonaws.com/splunk-5.0-140868-Linux-x86_64.tar"
  action :create_if_missing 
 end 
 
 bash "install_splunk" do
  cwd "/opt"
  code <<-EOH
-  tar -xvf splunk.tar
+  tar -xvf splunk5.tar
   chown -R splunk /opt/splunk
   EOH
 end 
